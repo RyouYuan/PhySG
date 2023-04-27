@@ -65,7 +65,7 @@ def get_vertical_colorbar(h, vmin, vmax, cmap_name='jet', label=None):
 
 def colorize_np(x, cmap_name='jet', mask=None, append_cbar=False, percentile=None):
     if mask is not None:
-        if mask.dtype != np.bool:
+        if mask.dtype != bool:
             mask = mask > 0
         if percentile is not None:
             vmin, vmax = np.percentile(x[mask], percentile)
@@ -103,7 +103,7 @@ def colorize_np(x, cmap_name='jet', mask=None, append_cbar=False, percentile=Non
 def colorize(x, cmap_name='jet', append_cbar=False, mask=None, percentile=None):
     x = x.numpy()
     if mask is not None:
-        mask = mask.numpy().astype(dtype=np.bool)
+        mask = mask.numpy().astype(dtype=bool)
     x, cbar = colorize_np(x, cmap_name, mask, percentile=percentile)
 
     if append_cbar:

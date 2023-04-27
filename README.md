@@ -13,11 +13,7 @@ conda activate PhySG
 * Optimize for geometry and material given a set of posed images and object segmentation masks
 ```bash
 cd code
-python training/exp_runner.py --conf confs_sg/default.conf \
-                              --data_split_dir ../example_data/kitty/train \
-                              --expname kitty \
-                              --nepoch 2000 --max_niter 200001 \
-                              --gamma 1.0
+python training/exp_runner.py --conf confs_sg/default.conf  --data_split_dir ../example_data/duck/train  --expname duck
 ```
 
 * Render novel views, relighting and mesh extraction, etc.
@@ -25,15 +21,9 @@ python training/exp_runner.py --conf confs_sg/default.conf \
 cd code
 # use same lighting as training
 python evaluation/eval.py --conf confs_sg/default.conf \
-                              --data_split_dir ../example_data/kitty/test \
-                              --expname kitty \
-                              --gamma 1.0 --resolution 256 --save_exr
-# plug in new lighting                              
-python evaluation/eval.py --conf confs_sg/default.conf \
-                              --data_split_dir ../example_data/kitty/test \
-                              --expname kitty \
-                              --gamma 1.0 --resolution 256 --save_exr \
-                              --light_sg ./envmaps/envmap3_sg_fit/tmp_lgtSGs_100.npy
+                              --data_split_dir ../example_data/duck/test \
+                              --expname duck \
+                              --gamma 1.0 --resolution 512 --save_exr
 ```
 
 Tips: for viewing exr images, you can use [tev hdr viewer](https://github.com/Tom94/tev/releases/tag/v1.17).
